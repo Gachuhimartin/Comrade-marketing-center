@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Comrade Marketing Centre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .logo-icon {
+            margin-right: 10px;
+        }
+        .nav {
+            display: flex;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .auth-buttons {
+            display: flex;
+        }
+        .auth-buttons a {
+            padding: 8px 20px;
+            margin-left: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .login {
+            border: 1px solid white;
+            color: white;
+        }
+        .register {
+            background-color: white;
+            color: #0066cc;
+        }
+        .main-content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #0066cc;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .info-item {
+            margin-bottom: 15px;
+        }
+        .info-item strong {
+            display: inline-block;
+            width: 100px;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 120px;
+        }
+        button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <span class="logo-icon">📦</span>
+            Comrade Marketing Centre
+        </div>
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="browse listing.html">Browse</a>
+            <a href="lost and found updated.html">Lost & Found</a>
+            <a href="About us.html">About</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="login.html" class="login">Login</a>
+            <a href="Registration.html" class="register">Register</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1>Contact Us</h1>
+        <p style="text-align: center;">Have questions, suggestions, or need assistance? We're here to help!</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                
+                <div class="info-item">
+                    <strong>Email:</strong> support@comrademarketing.edu
+                </div>
+                
+                <div class="info-item">
+                    <strong>Phone:</strong> (+254) 768-831-030
+                </div>
+                <!--
+                <div class="info-item">
+                    <strong>Hours:</strong> Monday-Friday, 9:00 AM - 5:00 PM
+                </div>
+            -->
+                <div class="info-item">
+                    <strong>Address:</strong><br>
+                    Comrade Marketing Centre<br>
+                    Student Union Building, Room 302<br>
+                    Meru University Main Campus<br>
+                    Nchiru, 12345
+                </div>
+                
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h2>Send Us a Message</h2>
+                <form>
+                    <div>
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div>
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div>
+                        <label for="student-id">Student ID</label>
+                        <input type="text" id="student-id">
+                    </div>
+                    
+                    <div>
+                        <label for="topic">Topic *</label>
+                        <select id="topic" required>
+                            <option value="" selected disabled>Select a topic</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="report">Report an Issue</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message">Message *</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <div>
+                        <input type="checkbox" id="newsletter" style="width: auto;">
+                        <label for="newsletter" style="display: inline; margin-left: 8px;">Subscribe to our newsletter</label>
+                    </div>
+                    
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

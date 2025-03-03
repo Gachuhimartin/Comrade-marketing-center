@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found - Comrade Marketing Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f3f5;
+        }
+        
+        .navbar {
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .brand {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .brand i {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: #0066cc;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn-light {
+            background-color: white;
+            color: #0066cc;
+            border: 1px solid white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-top: 0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .action-buttons a {
+            display: flex;
+            align-items: center;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .action-buttons a i {
+            margin-right: 8px;
+        }
+        
+        .primary-btn {
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        .secondary-btn {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .filter-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            padding: 10px 20px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .filter-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin: 30px 0 20px;
+            color: #333;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        
+        .items-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .item-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .item-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        
+        .lost-item .item-status {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .found-item .item-status {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .returned-item .item-status {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .item-image {
+            height: 150px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .item-image img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .item-details {
+            padding: 15px;
+        }
+        
+        .item-details h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .item-description {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .item-meta {
+            color: #777;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        
+        .item-meta i {
+            width: 20px;
+            text-align: center;
+            margin-right: 5px;
+        }
+        
+        .item-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .button-link {
+            padding: 8px 12px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .item-success-message {
+            color: #27ae60;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #0066cc;
+            border: 1px solid #0066cc;
+        }
+        
+        .pagination a.active {
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        .guidelines-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .guidelines-section h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .guidelines-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .guideline-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .guideline-item i {
+            font-size: 2.5rem;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        
+        .guideline-item h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+        
+        .footer-section h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .footer-section ul {
+            padding: 0;
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: #0066cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-bottom {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fas fa-store"></i> Comrade Marketing Centre
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="browse listing.html">Browse</a>
+            <a href="lost and found updated.html">Lost & Found</a>
+            <a href="About us.html">About</a>
+            <a href="Contact us.html">Contact</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="login.html" class="btn btn-primary">Login</a>
+            <a href="Registration.html" class="btn btn-light">Register</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1>Lost & Found</h1>
+            <p>Help fellow students find their lost items or report items you've found on campus.</p>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="report lost item.html" class="primary-btn"><i class="fas fa-search"></i> Report Lost Item</a>
+            <a href="report found  item .html" class="secondary-btn"><i class="fas fa-hand-holding"></i> Report Found Item</a>
+        </div>
+        
+        <div class="filter-section">
+            <div class="search-box">
+                <input type="text" placeholder="Search by keywords, location, date...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="category">Category:</label>
+                    <select id="category">
+                        <option value="all">All Categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="books">Books & Notes</option>
+                        <option value="id-cards">ID Cards & Documents</option>
+                        <option value="wallets">Wallets & Purses</option>
+                        <option value="keys">Keys</option>
+                        <option value="clothing">Clothing & Accessories</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="status">Status:</label>
+                    <select id="status">
+                        <option value="all">All</option>
+                        <option value="lost">Lost Items</option>
+                        <option value="found">Found Items</option>
+                        <option value="claimed">Claimed/Returned</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="location">Location:</label>
+                    <select id="location">
+                        <option value="all">All Locations</option>
+                        <option value="main-campus">Main Campus</option>
+                        <option value="east-wing">East Wing</option>
+                        <option value="library">Library</option>
+                        <option value="cafeteria">Cafeteria</option>
+                        <option value="sports-complex">Sports Complex</option>
+                        <option value="hostels">Hostels</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="date-range">Time Period:</label>
+                    <select id="date-range">
+                        <option value="all">Any Time</option>
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="this-week">This Week</option>
+                        <option value="last-week">Last Week</option>
+                        <option value="this-month">This Month</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Lost Items</h2>
+        <div class="items-list">
+            <!-- Lost Item 1 -->
+            <div class="item-card lost-item">
+                <div class="item-status">LOST</div>
+                <div class="item-image">
+                    <img src="/api/placeholder/200/150" alt="Lost laptop">
+                </div>
+                <div class="item-details">
+                    <h3>HP Laptop with Engineering Stickers</h3>
+                    <p class="item-description">Silver HP Pavilion laptop with engineering department stickers on the lid. Last seen in the Computer Lab 3.</p>
+                    <p class="item-meta"><i class="fas fa-map-marker-alt"></i> Computer Science Building</p>
+                    <p class="item-meta"><i class="fas fa-calendar-alt"></i> Lost on: Feb 27, 2025</p>
+                    <p class="item-meta"><i class="fas fa-user"></i> Posted by: Mary W.</p>
+                    <div class="item-actions">
+                        <a href="#" class="button-link">I Found This</a>
+                        <a href="#" class="button-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lost Item 2 -->
+            <div class="item-card lost-item">
+                <div class="item-status">LOST</div>
+                <div class="item-image">
+                    <img src="/api/placeholder/200/150" alt="Lost ID card">
+                </div>
+                <div class="item-details">
+                    <h3>Student ID Card</h3>
+                    <p class="item-description">University student ID card for John Mbeki, Student Number: SMU/2022/001234. Lost near the campus cafeteria.</p>
+                    <p class="item-meta"><i class="fas fa-map-marker-alt"></i> Main Cafeteria</p>
+                    <p class="item-meta"><i class="fas fa-calendar-alt"></i> Lost on: Feb 26, 2025</p>
+                    <p class="item-meta"><i class="fas fa-user"></i> Posted by: John M.</p>
+                    <div class="item-actions">
+                        <a href="#" class="button-link">I Found This</a>
+                        <a href="#" class="button-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Found Items</h2>
+        <div class="items-list">
+            <!-- Found Item 1 -->
+            <div class="item-card found-item">
+                <div class="item-status">FOUND</div>
+                <div class="item-image">
+                    <img src="/api/placeholder/200/150" alt="Found calculator">
+                </div>
+                <div class="item-details">
+                    <h3>Scientific Calculator</h3>
+                    <p class="item-description">Casio FX-991ES scientific calculator found in Lecture Hall B. Has initials "AM" scratched on the back cover.</p>
+                    <p class="item-meta"><i class="fas fa-map-marker-alt"></i> Engineering Block, Lecture Hall B</p>
+                    <p class="item-meta"><i class="fas fa-calendar-alt"></i> Found on: Feb 28, 2025</p>
+                    <p class="item-meta"><i class="fas fa-user"></i> Posted by: David O.</p>
+                    <div class="item-actions">
+                        <a href="#" class="button-link">This is Mine</a>
+                        <a href="#" class="button-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Found Item 2 -->
+            <div class="item-card found-item">
+                <div class="item-status">FOUND</div>
+                <div class="item-image">
+                    <img src="/api/placeholder/200/150" alt="Found water bottle">
+                </div>
+                <div class="item-details">
+                    <h3>Blue Water Bottle</h3>
+                    <p class="item-description">Blue Hydroflask water bottle with Faculty of Science sticker. Found at the basketball court after yesterday's game.</p>
+                    <p class="item-meta"><i class="fas fa-map-marker-alt"></i> Sports Complex, Basketball Court</p>
+                    <p class="item-meta"><i class="fas fa-calendar-alt"></i> Found on: Feb 27, 2025</p>
+                    <p class="item-meta"><i class="fas fa-user"></i> Posted by: Sarah K.</p>
+                    <div class="item-actions">
+                        <a href="#" class="button-link">This is Mine</a>
+                        <a href="#" class="button-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Recently Returned Items</h2>
+        <div class="items-list">
+            <!-- Returned Item 1 -->
+            <div class="item-card returned-item">
+                <div class="item-status">RETURNED</div>
+                <div class="item-image">
+                    <img src="/api/placeholder/200/150" alt="Returned wallet">
+                </div>
+                <div class="item-details">
+                    <h3>Brown Leather Wallet</h3>
+                    <p class="item-description">Brown leather wallet with university logo. Found at the library and returned to owner on Feb 26, 2025.</p>
+                    <p class="item-success-message"><i class="fas fa-check-circle"></i> Successfully returned to owner!</p>
+                </div>
+            </div>
+            
+            <!-- Returned Item 2 -->
+            <div class="item-card returned-item">
+                <div class="item-status">RETURNED</div>
+                <div class="item-image">
+                    <img src="/api/placeholder/200/150" alt="Returned jacket">
+                </div>
+                <div class="item-details">
+                    <h3>University Branded Jacket</h3>
+                    <p class="item-description">Black university jacket with logo on the back. Found in Lecture Hall A and returned to owner on Feb 25, 2025.</p>
+                    <p class="item-success-message"><i class="fas fa-check-circle"></i> Successfully returned to owner!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pagination">
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">Next &raquo;</a>
+        </div>
+        
+        <div class="guidelines-section">
+            <h2>Lost & Found Guidelines</h2>
+            <div class="guidelines-container">
+                <div class="guideline-item">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Reporting Lost Items</h3>
+                    <p>If you've lost an item, please provide as much detail as possible including photos (if available), where you believe you lost it, and any identifying features.</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-hand-holding"></i>
+                    <h3>Reporting Found Items</h3>
+                    <p>If you've found an item, please submit basic details without revealing unique identifying features that only the owner would know.</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h3>Returning Items</h3>
+                    <p>Always arrange to meet in public campus locations for item exchanges. Consider meeting at the campus security office for valuable items.</p>
+                </div>
+                <div class="guideline-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Security Office</h3>
+                    <p>The university security office also maintains a physical lost and found. Check with them at the Main Admin Block, or call ext. 1234.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Comrade Marketing Centre</h3>
+                <p>The ultimate marketplace for university students.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="browse listing.html">Browse</a></li>
+                    <li><a href="lost and found updated.html">Lost & Found</a></li>
+                    <li><a href="About us.html">About</a></li>
+                    <li><a href="Contact us.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> University Main Campus, Block A</p>
+                <p><i class="fas fa-phone"></i> +254 712 345 678</p>
+                <p><i class="fas fa-envelope"></i> info@comrademarketing.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Comrade Marketing Centre. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get filter elements
+            const categoryFilter = document.getElementById('category');
+            const statusFilter = document.getElementById('status');
+            const locationFilter = document.getElementById('location');
+            const dateFilter = document.getElementById('date-range');
+            
+            // Add event listeners to filters
+            categoryFilter.addEventListener('change', filterItems);
+            statusFilter.addEventListener('change', filterItems);
+            locationFilter.addEventListener('change', filterItems);
+            dateFilter.addEventListener('change', filterItems);
+            
+            function filterItems() {
+                // Filter functionality would go here
+                console.log('Filtering items...');
+                console.log('Category:', categoryFilter.value);
+                console.log('Status:', statusFilter.value);
+                console.log('Location:', locationFilter.value);
+                console.log('Date Range:', dateFilter.value);
+            }
+        });
+    </script>
+</body>
+</html>

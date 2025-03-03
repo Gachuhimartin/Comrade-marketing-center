@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comrade Marketing Centre - Report Lost Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f6f8;
+            color: #333;
+        }
+        
+        .header {
+            background-color: #0066CC;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        .logo-text {
+            font-size: 22px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            margin-left: 40px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        
+        .auth-buttons {
+            margin-right: 20px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .login-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            margin-right: 10px;
+        }
+        
+        .register-btn {
+            background-color: white;
+            color: #0066CC;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 40px;
+            color: #333;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .img-preview {
+            max-width: 300px;
+            max-height: 300px;
+            margin-top: 10px;
+            display: none;
+            border: 1px solid #ddd;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #0066CC;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0055b3;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .help-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header">
+        <div class="left-section" style="display: flex; align-items: center;">
+            <div class="logo-container">
+                <div class="logo-icon">📦</div>
+                <div class="logo-text">Comrade Marketing Centre</div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="browse listing.html">Browse</a>
+                <a href="lost and found updated.html">Lost & Found</a>
+                <a href="About us.html">About</a>
+            </div>
+        </div>
+        <div class="auth-buttons">
+            <button class="btn login-btn">Login</button>
+            <button class="btn register-btn">Register</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="page-title">Report a Lost Item</div>
+    <div class="page-subtitle">Help us reunite you with your lost belongings</div>
+    
+    <div class="form-container">
+        <form id="lostItemForm">
+            <div class="form-group">
+                <label for="itemName">Item Name <span class="required">*</span></label>
+                <input type="text" id="itemName" name="itemName" placeholder="E.g., Blue Backpack, Student ID Card" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category <span class="required">*</span></label>
+                <select id="category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="electronics">Electronics (Phone, Laptop, etc.)</option>
+                    <option value="id_cards">ID/Access Cards</option>
+                    <option value="keys">Keys</option>
+                    <option value="clothing">Clothing/Accessories</option>
+                    <option value="books">Books/Notes</option>
+                    <option value="bags">Bags/Backpacks</option>
+                    <option value="wallets">Wallets/Purses</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="dateLost">Date Lost <span class="required">*</span></label>
+                <input type="date" id="dateLost" name="dateLost" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="location">Last Known Location <span class="required">*</span></label>
+                <input type="text" id="location" name="location" placeholder="Building, Room, Area on Campus" required>
+                <p class="help-text">Please be as specific as possible to help locate your item</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Item Description <span class="required">*</span></label>
+                <textarea id="description" name="description" placeholder="Detailed description including color, size, brand, distinctive markings, contents, etc." required></textarea>
+                <p class="help-text">Include unique details that only the owner would know</p>
+            </div>
+            
+            <div class="form-group">
+                <label for="images">Upload Images (Optional)</label>
+                <input type="file" id="images" name="images" accept="image/*" multiple>
+                <p class="help-text">Images help identify your item more easily</p>
+                <div id="imagePreview"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="preferredContact">Preferred Contact Method <span class="required">*</span></label>
+                <select id="preferredContact" name="preferredContact" required>
+                    <option value="">Select preferred contact method</option>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone</option>
+                    <option value="both">Both</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="additionalInfo">Additional Information (Optional)</label>
+                <textarea id="additionalInfo" name="additionalInfo" placeholder="Any other details that might help us locate your item"></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Lost Item Report</button>
+        </form>
+    </div>
+
+    <script>
+        // Image preview functionality
+        document.getElementById('images').addEventListener('change', function(e) {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = ''; // Clear previous previews
+            
+            if (this.files) {
+                const maxFiles = 5;
+                const filesToProcess = Math.min(this.files.length, maxFiles);
+                
+                for (let i = 0; i < filesToProcess; i++) {
+                    const file = this.files[i];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const preview = document.createElement('img');
+                        preview.src = e.target.result;
+                        preview.className = 'img-preview';
+                        preview.style.display = 'block';
+                        preview.style.marginBottom = '10px';
+                        imagePreview.appendChild(preview);
+                    }
+                    
+                    reader.readAsDataURL(file);
+                }
+                
+                if (this.files.length > maxFiles) {
+                    const message = document.createElement('p');
+                    message.textContent = `Note: Only the first ${maxFiles} images will be uploaded.`;
+                    message.style.color = '#e74c3c';
+                    imagePreview.appendChild(message);
+                }
+            }
+        });
+        
+        // Form submission
+        document.getElementById('lostItemForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would handle the form submission here
+            // This could include form validation, sending data to a server, etc.
+            
+            alert('Your lost item report has been submitted. We will notify you if we find a matching item.');
+            
+            // Optionally reset the form after submission
+            // this.reset();
+            // document.getElementById('imagePreview').innerHTML = '';
+        });
+    </script>
+</body>
+</html>
